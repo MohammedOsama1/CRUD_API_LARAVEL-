@@ -16,7 +16,17 @@ use App\Http\Controllers;
 |
 */
 
-Route::resource('/products',Controllers\OurController::class);
+
+Route::get('fetchAll',[Controllers\ContSchool::class,'index']);
+Route::post('insert',[Controllers\ContSchool::class,'store']);
+Route::post('delete',[Controllers\ContSchool::class,'delete']);
+Route::post('update/{id}',[Controllers\ContSchool::class,'update']);
+Route::post('search',[Controllers\ContSchool::class,'search']);
+
+
+
+
+
 
 Route::get('/products/search/{name}',[Controllers\OurController::class,'search']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
