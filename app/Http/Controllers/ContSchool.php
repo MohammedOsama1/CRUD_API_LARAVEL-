@@ -6,11 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\school;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use function MongoDB\BSON\toJSON;
 
 class ContSchool extends Controller
 {
     public function index (){
-        return school::get();
+        return school::with('gerNG')->get();
     }
 
     public function store  (Request $request){

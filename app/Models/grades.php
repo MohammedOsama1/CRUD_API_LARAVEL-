@@ -5,15 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class school extends Model
+class grades extends Model
 {
-    protected $table = 'school';
     use HasFactory;
     protected $fillable = [
-        'name',
-        'phone'
+        'id'
+        ,'grade'
     ] ;
-    public function gerNG() {
-        return $this->hasOne(grades::class,'id');
-    }
 }

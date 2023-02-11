@@ -15,20 +15,20 @@ use App\Http\Controllers;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('signIn',[Controllers\authController::class,'signIn']);
+Route::post('login',[Controllers\authController::class,'login']);
 
 
-Route::get('fetchAll',[Controllers\ContSchool::class,'index']);
-Route::post('insert',[Controllers\ContSchool::class,'store']);
-Route::post('delete',[Controllers\ContSchool::class,'delete']);
-Route::post('update/{id}',[Controllers\ContSchool::class,'update']);
-Route::post('search',[Controllers\ContSchool::class,'search']);
+Route::middleware("auth:api")->group(function(){
+    Route::get('fetchAll',[Controllers\ContSchool::class,'index']);
+    Route::post('insert',[Controllers\ContSchool::class,'store']);
+    Route::post('delete',[Controllers\ContSchool::class,'delete']);
+    Route::post('update/{id}',[Controllers\ContSchool::class,'update']);
+    Route::post('search',[Controllers\ContSchool::class,'search']);
 
-
-
-
-
-
-Route::get('/products/search/{name}',[Controllers\OurController::class,'search']);
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
 });
+//Route::get('fetchAll','ContSchool@index');
+
+
+
+
